@@ -19,7 +19,7 @@ External referenced data files:
 A new set of linear prediction network heads are needed for the category discrimination task, which can be trained with `train_pair_logregs.py`:
 
 ```bash
-py3 code/sript/train_pair_logregs.py \
+python3 code/sript/train_pair_logregs.py \
     $DATA/discrim/regs_ign224_pair.npz      `# Output path` \
     $DATA/apool/enc_ign_iso224.h5           `# Isolated image encodings` \
     '0.4.3'                                 `# Layer` \
@@ -31,7 +31,7 @@ py3 code/sript/train_pair_logregs.py \
 Similarly to what was done in `stimuli.md` for the main detection task studied, we must turn isolated images into composites for the category discrimination task. This can be done using `gen_discrim_composites.py`
 
 ```bash
-py3 code/script/gen_discrim_composites.py \
+python3 code/script/gen_discrim_composites.py \
     $DATA/imagenet/imagenet_cls_tifc.h5     `# Output path` \
     $DATA/imagenet/imagenet_iso112.h5       `# Scaled-down isolated images` \
     450                                     `# Num composites per category` \
@@ -46,7 +46,7 @@ Stimuli for the category discrimination task must be converted to resulting laye
 ```bash
 IMG=$DATA/imagenet/imagenet_cls_tifc.h5
 N_IMG_PER_CAT=900
-$py3 $CODE/script/encodings.py \
+$python3 $CODE/script/encodings.py \
     $DATA/discrim/enc_ign_cls_tifc.h5            `# Output Path` \
     $CODE/lib/image_gen/h5_images.py             `# Image Set` \
     $CODE/cornet/cornet_zr.py                    `# Model` \
@@ -54,7 +54,7 @@ $py3 $CODE/script/encodings.py \
     --gen_cfg "img=$IMG:n=$N_IMG_PER_CAT"        `# Image config`
 
 BETA=4.0
-py3 $CODE/script/encodings.py \
+python3 $CODE/script/encodings.py \
     $DATA/discrim/enc_ign_cls_tifc_b$BETA.h5    `# Output Path` \
     $CODE/lib/image_gen/h5_images.py            `# Image Set` \
     $CODE/cornet/cornet_zr.py                   `# Model` \

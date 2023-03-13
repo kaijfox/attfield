@@ -61,7 +61,7 @@ NAMES=(1 2 3 4 a)
 NAME=${NAMES[$COND]}
 LAYERS=("[(0,1,0)]" "[(0,2,0)]" "[(0,3,0)]" "[(0,4,0)]" "[(0,1,0),(0,2,0),(0,3,0),(0,4,0)]")
 L=${LAYERS[$COND]}
-$py3 $CODE/script/reg_task.py \
+python3 $CODE/script/reg_task.py \
     $DATA/sensitivity/sn${NAME}_bhv_n300_b$B.h5  `# Output Path` \
     $DATA/imagenet/imagenet_four224l0.h5         `# Image Set` \
     300                                          `# Imgs per category` \

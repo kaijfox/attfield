@@ -13,7 +13,7 @@ Unit activations in the distributed condition can be calculated as in `fig-gauss
 
 ```bash
 IMG=$DATA/imagenet/imagenet_four224l0.h5
-$py3 $CODE/script/encodings.py \
+python3 $CODE/script/encodings.py \
     $DATA/reconst/fnenc_task_base.h5                `# Output Path` \
     $CODE/lib/image_gen/det_task.py                 `# Image Set` \
     $CODE/cornet/cornet_zr.py                       `# Observer model` \
@@ -28,7 +28,7 @@ Corresponding unit activations to those above, but from a focal condition with 4
 
 ```bash
 IMG=$DATA/imagenet/imagenet_four224l0.h
-$py3 $CODE/script/encodings.py \
+python3 $CODE/script/encodings.py \
     $DATA/reconst/enc_task_gauss_b2.0.h5            `# Output Path` \
     $CODE/lib/image_gen/det_task.py                 `# Image Set` \
     $CODE/cornet/cornet_zr.py                       `# Observer model` \

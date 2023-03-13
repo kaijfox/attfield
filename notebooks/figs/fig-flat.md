@@ -22,6 +22,13 @@ Focal condition receptive field gradients can be computed using `backprop.py`, a
     --attn_cfg "$SPL:$MRG:beta=1+($BETA-1)*0.35"         \
 ```
 
+using the bash variables
+
+```bash
+SPL="gain_split=(0,1,0):splits=[(0,1,1),(0,2,1),(0,3,1)]"
+MRG="merges=[(0,1,0),(0,2,0),(0,3,0),(0,4,0)]"
+```
+
 There is no need to compute distributed condition receptive fields again, as they were computed in `fig-gauss.md`. The ellipse-fit summaries can be generated using `summarize_rfs.py` as in `fig-gauss.md` with the new `rfs_stitch_beta_*.h5` files and with the output set to path to `flat/summ_stitch_b${BETA}_ell.csv`
 
 

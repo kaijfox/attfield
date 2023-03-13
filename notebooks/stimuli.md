@@ -1,6 +1,3 @@
-TODO after library:
-- What is `meta_csv` for `iso_distill`?
-
 
 Generated data files:
     - Full-size isolated base images `imagenet/imagenet_iso224.h5`

@@ -1,7 +1,4 @@
 
-Post-library TODO:
-
-
 
 Data files for `fig-cornet`:
 - Distributed condition behavior
@@ -21,7 +18,7 @@ External referenced data files
 To measure behavioral results on the detection task, train linear prediction network heads for the observer model:
 
 ```bash
-py3 $CODE/script/train_logregs.py \
+python3 $CODE/script/train_logregs.py \
     $DATA/models/logregs_iso224_t100.npz            `# Output Path` \
     $DATA/imagenet/imagenet_iso224.h5               `# Image Set` \
     100                                             `# Num images` \
@@ -35,7 +32,7 @@ py3 $CODE/script/train_logregs.py \
 As a reference point for all attention models, record behavior of the neural network observer on the detection task without any attention modification.
 
 ```bash
-py3 $CODE/script/reg_task.py \
+python3 $CODE/script/reg_task.py \
     $DATA/cornet/bhv_dist.h5                     `# Output Path` \
     $DATA/imagenet/imagenet_four224l0.h5         `# Image Set` \
     300                                          `# Imgs per category` \
@@ -51,7 +48,7 @@ To test whether Gaussian gain attention can enhance performance, run the neural 
 ```bash
 for B in 1.1 2.0 4.0 11.0
 do 
-py3 $CODE/script/reg_task.py \
+python3 $CODE/script/reg_task.py \
     $DATA/cornet/bhv_gauss_b$B.h5                `# Output Path` \
     $DATA/imagenet/imagenet_four224l0.h5         `# Image Set` \
     300                                          `# Imgs per category` \

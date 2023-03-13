@@ -12,10 +12,10 @@ parser.add_argument("output_path",
     help = "Path to .npz file to save the resulting data in.")
 parser.add_argument("coef_file",
     help = "Classifier coefficient file trained by train_fullmap_logregs.py")
-parser.add_argument("dist_acts",
+parser.add_argument("dist_file",
     help = "Path to HDF5 archive containing of last-layer encodings of " +
     "stimuli from the detection task in the distributed condition.")
-parser.add_argument("dist_acts",
+parser.add_argument("focl_file",
     help = "Path to HDF5 archive containing of last-layer encodings of " +
     "stimuli from the detection task in the focal condition.") 
 parser.add_argument("mask_size", type=int,

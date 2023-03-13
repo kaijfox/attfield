@@ -20,9 +20,9 @@ Unit activations in the distributed condition can be calculated as in `fig-gauss
 ```bash
 IMG=$DATA/imagenet/imagenet_four224l0.h5
 N_IMG_PER_CAT=300
-py3 $CODE/script/encodings.py \
+python3 $CODE/script/encodings.py \
     $DATA/apool/enc_task_imgnet_base.h5             `# Output Path` \
-    $CODE/proc/image_gen/det_task.py                `# Image Set` \
+    $CODE/lib/image_gen/det_task.py                 `# Image Set` \
     $CODE/cornet/cornet_zr.py                       `# Model` \
     '(0,4,3)'                                       `# Pull layer` \
     --gen_cfg "img=$IMG:n=$N_IMG_PER_CAT"           `# Image config`
@@ -36,13 +36,13 @@ Corresponding unit activations to those above, but from a focal condition with 4
 IMG=$DATA/imagenet/imagenet_four224l0.h5
 N_IMG_PER_CAT=300
 BETA=4.0
-py3 $CODE/script/encodings.py \
+python3 $CODE/script/encodings.py \
     $DATA/apool/enc_task_imgnet_gauss_b$BETA.h5     `# Output Path` \
-    $CODE/proc/image_gen/det_task.py                `# Image Set` \
+    $CODE/lib/image_gen/det_task.py                 `# Image Set` \
     $CODE/cornet/cornet_zr.py                       `# Model` \
     '(0,4,3)'                                       `# Pull layer` \
     --gen_cfg "img=$IMG:n=$N_IMG_PER_CAT"           `# Image config` \
-    --attn $CODE/proc/att_models/cts_gauss_gain.py  `# Attention ` \
+    --attn $CODE/lib/att_models/cts_gauss_gain.py   `# Attention ` \
     --attn_cfg "layer=(0,1,0):beta=$BETA"
 ```
 
@@ -53,10 +53,10 @@ To compute statistics on the effect of average pooling in readout, and to provid
 
 ```bash
 N_IMG_PER_CAT=1800
-py3 $CODE/script/encodings.py \
+python3 $CODE/script/encodings.py \
     $DATA/apool/enc_ign_iso224.h5                `# Output Path` \
-    $CODE/proc/image_gen/h5_images.py            `# Image Set` \
-    code/cornet/cornet/cornet_zr.py              `# Model` \
+    $CODE/lib/image_gen/h5_images.py             `# Image Set` \
+    $CODE/cornet/cornet_zr.py                    `# Model` \
     '(0,4,3)'  --batch_size 200                  `# Pull layer` \
     --gen_cfg "img=$IMG:n=$N_IMG_PER_CAT"        `# Image config`
 ```
@@ -64,7 +64,7 @@ py3 $CODE/script/encodings.py \
 Then train pooled and full-map logistic regressions with `train_fullmap_logregs.py`:
 
 ```bash
-py3 code/script/train_fullmap_logregs.py \
+python3 code/script/train_fullmap_logregs.py \
     $DATA/apool/ign_iso224_coefs.npz        `# Output path` \
     $DATA/apool/enc_ign_iso224.h5           `# Activations` \
     '0.4.3'                                 `# Layer` \
@@ -78,7 +78,7 @@ py3 code/script/train_fullmap_logregs.py \
 Scores in the distributed, focal, propagated gain map multiplied, and divided conditions - as in `fig-reconstruct.md` can be computed using `masked_readout_task.py` as follows:
 
 ```bash
-py3 code/script/masked_readout_task.py \
+python3 code/script/masked_readout_task.py \
     $DATA/apool/4x4_neccsuff_scores.npz         `# Output path` \
     $DATA/apool/apool/ign_iso224_coefs.npz      `# Full map classifiers` \
     $DATA/apool/enc_task_imgnet_base.h5         `# Dist. activations` \

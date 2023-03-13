@@ -1,8 +1,3 @@
-import importlib.util, os
-spec = importlib.util.spec_from_file_location("link_libs", os.environ['LIB_SCRIPT'])
-link_libs = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(link_libs)
-
 from lib.plot import behavior
 from lib.plot import kwargs as pkws
 from lib.plot import util

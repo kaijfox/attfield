@@ -13,4 +13,8 @@ The main contents are
 - `notebooks/` – Markdown files for each figure describing the use of the HPC scripts to generate data referenced in the corresponding `code/script/figs` file.
 
 
-__Note__: This repository is a work in progress to remove a rather large amount of clutter from the original codebase that was developed iteratively over several years, and does not yet contain all the library files required to run.
+#### Setup
+
+This repo is built mainly on `torch`, `numpy`, `matplotlib`, and `h5py`, but a full list of libraries and versions for setup using your virtual environment manager of choice may be found in `requirements.txt`
+
+Much of the code is designed to be run across a combination of local and high-performance-computing environments, so all paths are specified relative to `CODE` and `DATA` environment variables (accessed in python via `lib.paths`) that should be defined in a `bash_rc` or other environment startup script.

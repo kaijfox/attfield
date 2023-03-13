@@ -50,7 +50,7 @@ class params:
     norm_layers = ['0.1.3']
     norm_att_loc = (.25, .25)
     # Layer 4 feature map 1x1 readout AUCs
-    scores_1x1 = paths.data("avgpool/1x1_scores.npz")
+    scores_1x1 = paths.data("gauss/1x1_scores.npz")
 
     # --- General parameters
     layer_plot_file = 3

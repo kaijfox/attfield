@@ -3,24 +3,21 @@
 Implentation of helper functions for loading attention models or other dynamically
 specified scripts, and for parsing configurations to be passed to those scripts.
 
+An attention model specifically is a python file defining a function `attn_model`
+in its globals, that takes any number of configuration arguments passed through
+`load_model`'s keyword arguments, and returns a dictionary of `LayerMod`'s that 
+should be applied.
+
 ### Functions
-- `load_model` : Load a global variable from a python file given the path.
+- `load_model` : Load an attention model.
 - `load_cfg` : Load configs from JSON or a key-value string format.
 
 """
 
 
-from lib.experiment import network_manager as nm
-from lib.experiment import detection_task as det
-from lib.experiment import deformed_conv as dfc
-from lib.experiment import lsq_fields
 
 import importlib.util
-from torch import nn
-import numpy as np
-import torch
 import json
-import os
 
 
 
@@ -61,13 +58,6 @@ def load_cfg(string):
         }
 
 
-def pct_to_shape(pcts, shape):
-    """Scale percentage-based coordinate according to feature map shape.
-    ### Arguments
-    - `pcts` --- Pecentage-based coordinate, shape (ndim,)
-    - `shape` --- Shape of feature map spatial dimensions, shape (ndim,)
-    """
-    return tuple(p * s for p, s in zip(pcts, shape[-len(pcts):]))
 
 
 

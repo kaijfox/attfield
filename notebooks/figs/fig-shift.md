@@ -22,7 +22,7 @@ To determine desired receptive field shifts and therefore how to rewire units, e
 ```bash
 for B in 1.1 2.0 4.0 11.0
 do
-$py3 code/script/gen_unit_field.py \
+python3 code/script/gen_unit_field.py \
     $DATA/models/field_gauss_b${B}.h5         `# Output Path` \
     $DATA/guass/summ_cts_gauss_b${B}_ell.csv  `# Cued RFs` \
     $DATA/gauss/summ_base_ell.csv             `# Base RFs` \

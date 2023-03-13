@@ -1,9 +1,4 @@
 """
-TODO
-    - what is n_bins
-    - what is_comparison"""
-
-"""
 Plot effective gain changes between a distributed ('pre') and various focal
 ('post') conditions using precomputed activations.
 
@@ -264,8 +259,8 @@ with PdfPages(args.output_path) as pdf:
                 if not args.no_line:
                     bin_centers, bin_means, low_ci, high_ci = binned_mean_line(
                         xs, ys, args.n_bins, args.bootstrap_n)
-                    if args.is_comparison: line_kws = plot.kwargs.errorbar_secondary
-                    else: line_kws = plot.kwargs.errorbar
+                    if args.is_comparison: line_kws = pkws.errorbar_secondary
+                    else: line_kws = pkws.errorbar
                     ax.errorbar(
                         bin_centers, bin_means,
                         (bin_means - low_ci, high_ci - bin_means),
@@ -312,8 +307,8 @@ with PdfPages(args.output_path) as pdf:
                 if not args.no_line:
                     bin_centers, bin_means, low_ci, high_ci = binned_mean_line(
                         xs, ys, args.n_bins, args.bootstrap_n)
-                    if args.is_comparison: line_kws = plot.kwargs.errorbar_secondary
-                    else: line_kws = plot.kwargs.errorbar
+                    if args.is_comparison: line_kws = pkws.errorbar_secondary
+                    else: line_kws = pkws.errorbar
                     ax.errorbar(
                         bin_centers, bin_means,
                         (bin_means - low_ci, high_ci - bin_means),
@@ -355,8 +350,8 @@ with PdfPages(args.output_path) as pdf:
                 if not args.no_line:
                     bin_centers, bin_means, low_ci, high_ci = binned_mean_line(
                         xs, ys, args.n_bins, args.bootstrap_n)
-                    if args.is_comparison: line_kws = plot.kwargs.errorbar_secondary
-                    else: line_kws = plot.kwargs.errorbar
+                    if args.is_comparison: line_kws = pkws.errorbar_secondary
+                    else: line_kws = pkws.errorbar
                     ax.errorbar(
                         bin_centers, bin_means,
                         (bin_means - low_ci, high_ci - bin_means),
